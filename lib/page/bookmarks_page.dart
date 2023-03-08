@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../model/bookmark.dart';
 import '../widget/bookmarks_list_widget.dart';
+import 'add_bookmark_page.dart';
 
 class BookmarksPage extends StatelessWidget {
   BookmarksPage({super.key});
@@ -16,6 +17,14 @@ class BookmarksPage extends StatelessWidget {
         title: const Text("My Bookmarks"),
       ),
       body: BookmarksListWidget(bookmarksList: bookmarksList),
+      floatingActionButtonLocation: FloatingActionButtonLocation.centerFloat,
+      floatingActionButton: FloatingActionButton.extended(
+          icon: const Icon(Icons.add),
+          onPressed: () {
+            Navigator.of(context).push(MaterialPageRoute(
+                builder: (context) => const AddBookmarksPage()));
+          },
+          label: const Text("Add")),
     );
   }
 }
