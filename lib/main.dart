@@ -18,7 +18,7 @@ class MyBookmarksApp extends StatelessWidget {
 
 class BookmarksPage extends StatelessWidget {
   BookmarksPage({super.key});
-  List<Bookmark> bookmarksList = [
+  final List<Bookmark> bookmarksList = [
     Bookmark("Flutter", "https://flutter.dev"),
     Bookmark("Google", "https://google.com"),
   ];
