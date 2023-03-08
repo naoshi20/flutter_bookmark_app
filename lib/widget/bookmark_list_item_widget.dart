@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import '../model/bookmark.dart';
-import '../page/view_bookmark_page.dart';
+import '../util/navigation_util.dart';
 
 class BookmarksItemWidget extends StatelessWidget {
   const BookmarksItemWidget({Key? key, required this.bookmarksItem})
@@ -13,10 +13,7 @@ class BookmarksItemWidget extends StatelessWidget {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () {
-          Navigator.of(context).push(MaterialPageRoute(
-              builder: (context) => const ViewBookmarksPage()));
-        },
+        onTap: () => navigateToViewBookmarkPage(context),
         child: Column(
           crossAxisAlignment: CrossAxisAlignment.start,
           children: [
