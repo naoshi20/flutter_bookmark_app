@@ -14,24 +14,25 @@ class TaxiApp extends StatelessWidget {
         appBar: AppBar(
           title: const Text("My home page"),
         ),
-        body: Center(
-          child: Container(
-            padding: const EdgeInsets.all(12),
-            margin: const EdgeInsets.all(24),
-            alignment: Alignment.center,
-            constraints: const BoxConstraints.expand(height: 300),
-            decoration: BoxDecoration(
-              color: Colors.redAccent,
-              border: Border.all(width: 4, color: Colors.blue),
-              borderRadius: BorderRadius.circular(16),
-            ),
-            child: Container(
-              color: Colors.yellow,
-              child: const Text(
-                "My home page. This widget in inside a Container widget.",
-                textAlign: TextAlign.center,
+        body: Container(
+          color: Colors.lightBlue,
+          child: Column(
+            crossAxisAlignment: CrossAxisAlignment.stretch,
+            mainAxisSize: MainAxisSize.min,
+            children: <Widget>[
+              Container(
+                color: Colors.green,
+                child: const Text("Columns"),
               ),
-            ),
+              Container(
+                color: Colors.red,
+                child: const Text("Columns"),
+              ),
+              Container(
+                color: Colors.blue,
+                child: const Text("Columns"),
+              ),
+            ],
           ),
         ),
       ),
