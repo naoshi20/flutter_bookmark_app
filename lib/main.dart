@@ -1,55 +1,52 @@
 import 'package:flutter/material.dart';
+import 'bookmark.dart';
 
 void main() {
-  runApp(const TaxiApp());
+  runApp(const MyBookmarksApp());
 }
 
-class TaxiApp extends StatelessWidget {
-  const TaxiApp({super.key});
+class MyBookmarksApp extends StatelessWidget {
+  const MyBookmarksApp({super.key});
 
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      home: Scaffold(
-        appBar: AppBar(
-          title: const Text("My home page"),
-        ),
-        body: Container(
-          color: Colors.lightBlue,
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.stretch,
-            mainAxisSize: MainAxisSize.min,
-            children: <Widget>[
-              Container(
-                color: Colors.green,
-                child: const Text("Columns"),
-              ),
-              Container(
-                color: Colors.red,
-                child: const Text("Columns"),
-              ),
-              Container(
-                color: Colors.blue,
-                child: const Text("Columns"),
-              ),
-            ],
-          ),
-        ),
-      ),
+      home: BookmarksPage(),
     );
   }
 }
 
-class LoginPage extends StatefulWidget {
-  const LoginPage({super.key});
+class BookmarksPage extends StatelessWidget {
+  BookmarksPage({super.key});
+  List<Bookmark> bookmarksList = [
+    Bookmark("Flutter", "https://flutter.dev"),
+    Bookmark("Google", "https://google.com"),
+  ];
 
-  @override
-  State<LoginPage> createState() => _LoginPageState();
-}
-
-class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
-    return Container();
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("My Bookmarks"),
+      ),
+      body: BookmarksListWidget(bookmarksList: bookmarksList),
+    );
+  }
+}
+
+class BookmarksListWidget extends StatelessWidget {
+  const BookmarksListWidget({Key? key, required this.bookmarksList})
+      : super(key: key);
+
+  final List<Bookmark> bookmarksList;
+
+  @override
+  Widget build(BuildContext context) {
+    return ListView(
+      children: <Widget>[
+        Text(bookmarksList[0].title),
+        Text(bookmarksList[1].title),
+      ],
+    );
   }
 }
