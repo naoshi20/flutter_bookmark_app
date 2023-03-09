@@ -10,7 +10,7 @@ class ViewBookmarksPage extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("ViewBookMarks"),
+        title: Text(bookmark.title),
       ),
       body: ViewWebPageWidget(url: bookmark.link),
       //body: ,
