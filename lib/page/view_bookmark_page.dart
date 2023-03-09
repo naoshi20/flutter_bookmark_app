@@ -9,6 +9,26 @@ class ViewBookmarksPage extends StatefulWidget {
 }
 
 class _ViewBookmarksPageState extends State<ViewBookmarksPage> {
+  @override
+  Widget build(BuildContext context) {
+    return Scaffold(
+      appBar: AppBar(
+        title: const Text("ViewBookMarks"),
+      ),
+      body: const ViewWebPageWidget(),
+      //body: ,
+    );
+  }
+}
+
+class ViewWebPageWidget extends StatefulWidget {
+  const ViewWebPageWidget({super.key});
+
+  @override
+  State<ViewWebPageWidget> createState() => _ViewWebPageWidgetState();
+}
+
+class _ViewWebPageWidgetState extends State<ViewWebPageWidget> {
   var _isLoadingWebPage = true;
 
   late WebViewController controller = WebViewController()
@@ -34,24 +54,18 @@ class _ViewBookmarksPageState extends State<ViewBookmarksPage> {
         },
       ),
     )
-    ..loadRequest(Uri.parse('https://google.com'));
+    ..loadRequest(Uri.parse('https://flutter.dev'));
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        title: const Text("ViewBookMarks"),
-      ),
-      body: Stack(
-        alignment: Alignment.center,
-        children: <Widget>[
-          WebViewWidget(
-            controller: controller,
-          ),
-          _isLoadingWebPage ? const CircularProgressIndicator() : Container(),
-        ],
-      ),
-      //body: ,
+    return Stack(
+      alignment: Alignment.center,
+      children: <Widget>[
+        WebViewWidget(
+          controller: controller,
+        ),
+        _isLoadingWebPage ? const CircularProgressIndicator() : Container(),
+      ],
     );
   }
 }
