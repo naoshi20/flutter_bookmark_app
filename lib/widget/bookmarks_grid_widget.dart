@@ -14,7 +14,10 @@ class BookmarksGridWidget extends StatelessWidget {
       padding: const EdgeInsets.symmetric(horizontal: 6),
       child: GridView.builder(
         gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-            crossAxisCount: 2, childAspectRatio: 2, crossAxisSpacing: 6),
+          childAspectRatio: 1.5,
+          crossAxisCount: 2,
+          crossAxisSpacing: 6,
+        ),
         itemCount: bookmarksList.length,
         itemBuilder: (BuildContext context, int index) =>
             BookmarksGridItemWidget(bookmark: bookmarksList[index]),

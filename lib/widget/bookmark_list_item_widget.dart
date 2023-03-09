@@ -14,11 +14,19 @@ class BookmarksItemWidget extends StatelessWidget {
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
         onTap: () => navigateToViewBookmarkPage(bookmark, context),
-        child: Column(
-          crossAxisAlignment: CrossAxisAlignment.start,
+        child: Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
-            Text(bookmark.title, style: Theme.of(context).textTheme.titleLarge),
-            Text(bookmark.link, style: Theme.of(context).textTheme.bodyMedium),
+            Column(
+              crossAxisAlignment: CrossAxisAlignment.start,
+              children: [
+                Text(bookmark.title,
+                    style: Theme.of(context).textTheme.titleLarge),
+                Text(bookmark.link,
+                    style: Theme.of(context).textTheme.bodyMedium),
+              ],
+            ),
+            Hero(tag: bookmark.link, child: const Icon(Icons.star, size: 40))
           ],
         ),
       ),

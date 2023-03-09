@@ -11,6 +11,15 @@ class ViewBookmarksPage extends StatelessWidget {
     return Scaffold(
       appBar: AppBar(
         title: Text(bookmark.title),
+        actions: <Widget>[
+          Hero(
+            tag: bookmark.link,
+            child: const Padding(
+              padding: EdgeInsets.all(8.0),
+              child: Icon(Icons.star),
+            ),
+          )
+        ],
       ),
       body: ViewWebPageWidget(url: bookmark.link),
       //body: ,
