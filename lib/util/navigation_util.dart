@@ -4,7 +4,7 @@ import '../page/add_bookmark_page.dart';
 
 void navigateToViewBookmarkPage(BuildContext context) {
   Navigator.of(context)
-      .push(MaterialPageRoute(builder: (context) => const ViewBookmarksPage()));
+      .push(MaterialPageRoute(builder: (context) => ViewBookmarksPage()));
 }
 
 void navigateToAddBookmarkPage(BuildContext context) {
