@@ -2,7 +2,8 @@ import 'package:flutter/material.dart';
 import 'package:webview_flutter/webview_flutter.dart';
 
 class ViewWebPageWidget extends StatefulWidget {
-  const ViewWebPageWidget({super.key});
+  const ViewWebPageWidget({Key? key, required this.url}) : super(key: key);
+  final String url;
 
   @override
   State<ViewWebPageWidget> createState() => _ViewWebPageWidgetState();
@@ -34,7 +35,7 @@ class _ViewWebPageWidgetState extends State<ViewWebPageWidget> {
         },
       ),
     )
-    ..loadRequest(Uri.parse('https://flutter.dev'));
+    ..loadRequest(Uri.parse(widget.url));
 
   @override
   Widget build(BuildContext context) {

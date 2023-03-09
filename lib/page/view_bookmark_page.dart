@@ -1,21 +1,18 @@
+import 'package:command_line_project/model/bookmark.dart';
 import 'package:flutter/material.dart';
 import '../widget/view_web_page_widget.dart';
 
-class ViewBookmarksPage extends StatefulWidget {
-  const ViewBookmarksPage({super.key});
+class ViewBookmarksPage extends StatelessWidget {
+  const ViewBookmarksPage({Key? key, required this.bookmark}) : super(key: key);
+  final Bookmark bookmark;
 
-  @override
-  State<ViewBookmarksPage> createState() => _ViewBookmarksPageState();
-}
-
-class _ViewBookmarksPageState extends State<ViewBookmarksPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
         title: const Text("ViewBookMarks"),
       ),
-      body: const ViewWebPageWidget(),
+      body: ViewWebPageWidget(url: bookmark.link),
       //body: ,
     );
   }
