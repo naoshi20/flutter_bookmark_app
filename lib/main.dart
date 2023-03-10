@@ -8,27 +8,34 @@ import '../model/bookmark.dart';
 final GoRouter _router = GoRouter(
   routes: [
     GoRoute(
+      name: "route",
       path: "/",
-      builder: (context, state) => const BookmarksPage(),
-      routes: [
-        GoRoute(
-          name: "bookmarks",
-          path: "bookmarks/:id",
-          builder: (context, state) {
-            final extra =
-                state.extra! as Map; //ここで型を指定しないとObjectとして読み取られ中身にアクセスできない。
-            return ViewBookmarksPage(
-              bookmarkId: int.parse(state.params["id"]!),
-              bookmarksList: extra["bookmarksList"] as List<Bookmark>,
-            );
-          },
-        ),
-        GoRoute(
-          name: "add",
-          path: "add/",
-          builder: (context, state) => const AddBookmarksPage(),
-        )
-      ],
+      builder: (context, state) {
+        Bookmark? bookmark;
+        if (state.extra != null) {
+          final extra =
+              state.extra! as Map; //ここで型を指定しないとObjectとして読み取られ中身にアクセスできない。
+          bookmark = extra["bookmark"];
+        }
+        return BookmarksPage(bookmark: bookmark);
+      },
+    ),
+    GoRoute(
+      name: "bookmarks",
+      path: "/bookmarks/:id",
+      builder: (context, state) {
+        final extra =
+            state.extra! as Map; //ここで型を指定しないとObjectとして読み取られ中身にアクセスできない。
+        return ViewBookmarksPage(
+          bookmarkId: int.parse(state.params["id"]!),
+          bookmarksList: extra["bookmarksList"] as List<Bookmark>,
+        );
+      },
+    ),
+    GoRoute(
+      name: "add",
+      path: "/add",
+      builder: (context, state) => const AddBookmarksPage(),
     ),
   ],
 );

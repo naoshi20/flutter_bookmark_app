@@ -1,13 +1,14 @@
-import 'package:flutter_riverpod/flutter_riverpod.dart';
+// import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import '../model/bookmark.dart';
 import '../widget/bookmarks_grid_widget.dart';
 import '../widget/bookmarks_list_widget.dart';
 import '../util/navigation_util.dart';
-import '../provider/providers.dart';
+// import '../provider/providers.dart';
 
 class BookmarksPage extends StatefulWidget {
-  const BookmarksPage({super.key});
+  const BookmarksPage({Key? key, required this.bookmark}) : super(key: key);
+  final Bookmark? bookmark;
 
   @override
   State<BookmarksPage> createState() => _BookmarksPageState();
@@ -19,6 +20,10 @@ class _BookmarksPageState extends State<BookmarksPage> {
 
   @override
   Widget build(BuildContext context) {
+    if (widget.bookmark != null) {
+      bookmarksList.add(widget.bookmark as Bookmark);
+    }
+
     return Scaffold(
       appBar: AppBar(
         title: const Text("Myyyy Bookmarks"),
@@ -45,12 +50,7 @@ class _BookmarksPageState extends State<BookmarksPage> {
     );
   }
 
-  void onAddButtonPressed(BuildContext context) async {
-    final result = await navigateToAddBookmarkPage(context);
-    if (result != null && result is Bookmark) {
-      setState(() {
-        bookmarksList.add(result);
-      });
-    }
+  void onAddButtonPressed(BuildContext context) {
+    navigateToAddBookmarkPage(context);
   }
 }

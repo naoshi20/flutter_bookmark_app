@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import '../model/bookmark.dart';
 import '../page/bookmarks_page.dart';
+import 'package:go_router/go_router.dart';
 
 class AddBookmarksPage extends StatefulWidget {
   const AddBookmarksPage({super.key});
@@ -29,7 +30,10 @@ class _AddBookmarksPageState extends State<AddBookmarksPage> {
 
                     ScaffoldMessenger.of(context).hideCurrentSnackBar();
                     if (isInputValid(title, link)) {
-                      Navigator.pop(context, Bookmark(title, link));
+                      // Navigator.pop(context, Bookmark(title, link));
+                      context.goNamed("route", extra: {
+                        "bookmark": Bookmark(title, link),
+                      });
                     } else {
                       showInputError(context, title, link);
                     }
