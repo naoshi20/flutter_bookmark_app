@@ -20,7 +20,10 @@ class BookmarksGridWidget extends StatelessWidget {
         ),
         itemCount: bookmarksList.length,
         itemBuilder: (BuildContext context, int index) =>
-            BookmarksGridItemWidget(bookmark: bookmarksList[index]),
+            BookmarksGridItemWidget(
+          bookmarkId: index,
+          bookmarksList: bookmarksList,
+        ),
       ),
     );
   }

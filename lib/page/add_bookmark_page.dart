@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import '../model/bookmark.dart';
+import '../page/bookmarks_page.dart';
 
 class AddBookmarksPage extends StatefulWidget {
   const AddBookmarksPage({super.key});

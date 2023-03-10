@@ -13,7 +13,7 @@ class BookmarksListWidget extends StatelessWidget {
     return ListView.builder(
       itemCount: bookmarksList.length,
       itemBuilder: (BuildContext context, int index) =>
-          BookmarksItemWidget(bookmark: bookmarksList[index]),
+          BookmarksItemWidget(bookmarkId: index, bookmarksList: bookmarksList),
     );
   }
 }

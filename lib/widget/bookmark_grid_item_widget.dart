@@ -3,10 +3,12 @@ import '../model/bookmark.dart';
 import '../util/navigation_util.dart';
 
 class BookmarksGridItemWidget extends StatelessWidget {
-  const BookmarksGridItemWidget({Key? key, required this.bookmark})
+  const BookmarksGridItemWidget(
+      {Key? key, required this.bookmarkId, required this.bookmarksList})
       : super(key: key);
 
-  final Bookmark bookmark;
+  final int bookmarkId;
+  final List<Bookmark> bookmarksList;
 
   @override
   Widget build(BuildContext context) {
@@ -15,22 +17,25 @@ class BookmarksGridItemWidget extends StatelessWidget {
       child: Padding(
         padding: const EdgeInsets.all(12),
         child: InkWell(
-          onTap: () => navigateToViewBookmarkPage(bookmark, context),
+          onTap: () =>
+              navigateToViewBookmarkPage(bookmarkId, bookmarksList, context),
           child: Column(
             mainAxisAlignment: MainAxisAlignment.center,
             crossAxisAlignment: CrossAxisAlignment.center,
             children: [
-              Text(bookmark.title,
+              Text(bookmarksList[bookmarkId].title,
                   style: Theme.of(context).textTheme.titleLarge),
               const SizedBox(
                 height: 6,
               ),
-              Text(bookmark.link,
+              Text(bookmarksList[bookmarkId].link,
                   style: Theme.of(context).textTheme.bodyMedium),
               const SizedBox(
                 height: 6,
               ),
-              Hero(tag: bookmark.link, child: const Icon(Icons.star))
+              Hero(
+                  tag: bookmarksList[bookmarkId].link,
+                  child: const Icon(Icons.star))
             ],
           ),
         ),

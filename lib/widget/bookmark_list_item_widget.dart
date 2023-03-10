@@ -3,30 +3,35 @@ import '../model/bookmark.dart';
 import '../util/navigation_util.dart';
 
 class BookmarksItemWidget extends StatelessWidget {
-  const BookmarksItemWidget({Key? key, required this.bookmark})
+  const BookmarksItemWidget(
+      {Key? key, required this.bookmarkId, required this.bookmarksList})
       : super(key: key);
 
-  final Bookmark bookmark;
+  final int bookmarkId;
+  final List<Bookmark> bookmarksList;
 
   @override
   Widget build(BuildContext context) {
     return Padding(
       padding: const EdgeInsets.all(8.0),
       child: InkWell(
-        onTap: () => navigateToViewBookmarkPage(bookmark, context),
+        onTap: () =>
+            navigateToViewBookmarkPage(bookmarkId, bookmarksList, context),
         child: Row(
           mainAxisAlignment: MainAxisAlignment.spaceBetween,
           children: [
             Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                Text(bookmark.title,
+                Text(bookmarksList[bookmarkId].title,
                     style: Theme.of(context).textTheme.titleLarge),
-                Text(bookmark.link,
+                Text(bookmarksList[bookmarkId].link,
                     style: Theme.of(context).textTheme.bodyMedium),
               ],
             ),
-            Hero(tag: bookmark.link, child: const Icon(Icons.star, size: 40))
+            Hero(
+                tag: bookmarksList[bookmarkId].link,
+                child: const Icon(Icons.star, size: 40))
           ],
         ),
       ),

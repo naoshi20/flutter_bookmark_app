@@ -1,8 +1,10 @@
+import 'package:flutter_riverpod/flutter_riverpod.dart';
 import 'package:flutter/material.dart';
 import '../model/bookmark.dart';
 import '../widget/bookmarks_grid_widget.dart';
 import '../widget/bookmarks_list_widget.dart';
 import '../util/navigation_util.dart';
+import '../provider/providers.dart';
 
 class BookmarksPage extends StatefulWidget {
   const BookmarksPage({super.key});
@@ -19,7 +21,7 @@ class _BookmarksPageState extends State<BookmarksPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text("My Bookmarks"),
+        title: const Text("Myyyy Bookmarks"),
         actions: <Widget>[
           IconButton(
               onPressed: () {
